@@ -3,3 +3,5 @@
 	email = natusi801@gmail.com
 [core]
 	editor = nano
+[push]
+	default = simple
