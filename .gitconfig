@@ -2,6 +2,10 @@
 	name = natusi
 	email = natusi801@gmail.com
 [core]
-	editor = nano
+	editor = vim
 [push]
 	default = simple
+[http]
+	sslVerify = true
+[credential]
+	helper = osxkeychain
