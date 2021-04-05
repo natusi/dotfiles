@@ -145,5 +145,5 @@ nnoremap ak <C-W>k
 nnoremap al <C-W>l
 nnoremap ah <C-W>h
 
-" Leetcode
-let g:leetcode_browser = 'chrome'
+" Hard time https://github.com/takac/vim-hardtime
+let g:hardtime_default_on = 1
