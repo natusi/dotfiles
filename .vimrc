@@ -21,6 +21,8 @@ Plugin 'preservim/nerdtree'
 Plugin 'neoclide/coc.nvim'
 Plugin 'dart-lang/dart-vim-plugin'
 
+Plugin 'takac/vim-hardtime'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -142,3 +144,6 @@ nnoremap aj <C-W>j
 nnoremap ak <C-W>k
 nnoremap al <C-W>l
 nnoremap ah <C-W>h
+
+" Leetcode
+let g:leetcode_browser = 'chrome'
