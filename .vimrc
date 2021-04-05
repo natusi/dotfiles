@@ -20,6 +20,7 @@ Plugin 'preservim/nerdtree'
 
 Plugin 'neoclide/coc.nvim'
 Plugin 'dart-lang/dart-vim-plugin'
+Plugin 'derekwyatt/vim-scala'
 
 Plugin 'takac/vim-hardtime'
 
@@ -29,15 +30,20 @@ filetype plugin indent on    " required
 syntax on
 colorscheme onedark
 
-" Use the_silver_searcher instead of ack.
+set tags=./tags;,tags;
+
 " https://github.com/ggreer/the_silver_searcher
-let g:ackprg = 'ag --nogroup --nocolor --column'
+" The Silver Searcher
+if executable('ag')
+  " Use ag over ack.
+  let g:ackprg = 'ag --nogroup --nocolor --column'
+
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
 
 inoremap jj <ESC>
 let mapleader = "'"
-
-" Use space in normal mode.
-nnoremap <space> i<space><esc>
 
 " turn relative line numbers on
 set relativenumber
@@ -50,7 +56,8 @@ set showtabline=2
 set ignorecase
 set incsearch
 set laststatus=2
-set autochdir
+" set autochdir
+set tags=/Users/oerdogmus/workspace/tags
 
 " Indentation
 set sts=2
@@ -59,13 +66,6 @@ set autoindent
 set ts=2
 set sw=2
 set et
-
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv 
-vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " Disable arrow keys for all modes.
 for key in ['<Up>', '<Down>', '<Left>', '<Right>']
@@ -128,6 +128,8 @@ nmap <Leader>8 <Plug>lightline#bufferline#go(8)
 nmap <Leader>9 <Plug>lightline#bufferline#go(9)
 nmap <Leader>0 <Plug>lightline#bufferline#go(10)
 
+nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+
 nmap <Leader>c1 <Plug>lightline#bufferline#delete(1)
 nmap <Leader>c2 <Plug>lightline#bufferline#delete(2)
 nmap <Leader>c3 <Plug>lightline#bufferline#delete(3)
@@ -140,10 +142,29 @@ nmap <Leader>c9 <Plug>lightline#bufferline#delete(9)
 nmap <Leader>c0 <Plug>lightline#bufferline#delete(10)
 
 " Use 'a' to navigate between windows
-nnoremap aj <C-W>j
-nnoremap ak <C-W>k
-nnoremap al <C-W>l
-nnoremap ah <C-W>h
+nnoremap <Leader>aj <C-W>j
+nnoremap <Leader>ak <C-W>k
+nnoremap <Leader>al <C-W>l
+nnoremap <Leader>ah <C-W>h
+nnoremap <Leader>cc <C-W>c
+nnoremap <Leader>co <C-W>o
+
+nnoremap = :vertical resize +10<CR>
+nnoremap - :vertical resize -10<CR>
 
 " Hard time https://github.com/takac/vim-hardtime
 let g:hardtime_default_on = 1
+
+" Use Shift to navigate more effectively
+nnoremap H ^
+nnoremap L $
+nnoremap J <C-d>
+nnoremap K <C-u>
+
+" Search word under cursor in whole project.
+nnoremap <Leader>* :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" Custom utility commands.
+command DirSetCurrentFile :cd %:p:h
+command OpenVimrc :edit ~/.vimrc
+command SourceVimrc :source ~/.vimrc
