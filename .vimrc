@@ -26,14 +26,13 @@ Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'derekwyatt/vim-scala'
 
 Plugin 'takac/vim-hardtime'
+Plugin 'easymotion/vim-easymotion'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 syntax on
 colorscheme onedark
-
-set tags=./tags;,tags;
 
 " https://github.com/ggreer/the_silver_searcher
 " The Silver Searcher
@@ -54,11 +53,12 @@ set rnu
 
 set number
 set noswapfile
-set hlsearch
+set nohlsearch
 set showtabline=2
 set ignorecase
 set incsearch
 set laststatus=2
+set cursorline
 " set autochdir
 set tags=/Users/oerdogmus/workspace/tags
 
@@ -136,7 +136,7 @@ nnoremap <Leader>aj <C-W>j
 nnoremap <Leader>ak <C-W>k
 nnoremap <Leader>al <C-W>l
 nnoremap <Leader>ah <C-W>h
-nnoremap <Leader>cc <C-W>c
+
 nnoremap <Leader>co <C-W>o
 
 nnoremap = :vertical resize +10<CR>
@@ -164,3 +164,7 @@ let g:rainbow_active = 1
 
 " Indent guides.
 let g:indent_guides_enable_on_vim_startup = 1
+
+" Easymotion settings.
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
