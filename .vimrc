@@ -18,6 +18,7 @@ Plugin 'mengelbrecht/lightline-bufferline'
 Plugin 'luochen1990/rainbow'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'qpkorr/vim-bufkill'
+Plugin 'justinmk/vim-sneak'
 
 Plugin 'preservim/nerdtree'
 
@@ -166,5 +167,10 @@ let g:rainbow_active = 1
 let g:indent_guides_enable_on_vim_startup = 1
 
 " Easymotion settings.
+let g:EasyMotion_do_mapping = 0
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
+
+" Sneak settings.
+map s <Plug>Sneak_s
+map S <Plug>Sneak_S
